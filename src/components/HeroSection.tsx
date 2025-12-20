@@ -1,11 +1,13 @@
 import { ChevronDown, ArrowRight } from "lucide-react";
-import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { useEffect, useState } from "react";
 
+// Assuming ImageWithFallback is in the same directory or adjust path
+// import { ImageWithFallback } from "./figma/ImageWithFallback"; 
+
 const scrollToBooking = () => {
-    const bookingSection = document.querySelector('#booking-section');
-    bookingSection?.scrollIntoView({ behavior: 'smooth' });
-  };
+  const bookingSection = document.querySelector('#booking-section');
+  bookingSection?.scrollIntoView({ behavior: 'smooth' });
+};
 
 const heroImages = [
   "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1920&q=100&fm=jpg",
@@ -19,26 +21,18 @@ export function HeroSection() {
 
   useEffect(() => {
     const interval = setInterval(
-      () =>
-        setActiveIndex(
-          (prev) => (prev + 1) % heroImages.length,
-        ),
+      () => setActiveIndex((prev) => (prev + 1) % heroImages.length),
       5000,
     );
     return () => clearInterval(interval);
   }, []);
 
-  const titleWords = [
-    "STRONGER",
-    "EVERYDAY,",
-    "FITTER",
-    "FOREVER",
-  ];
+  const titleWords = ["STRONGER", "EVERYDAY,", "FITTER", "FOREVER"];
 
   return (
     <section
       id="home"
-      className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-slate-950"
+      className="relative min-h-[100dvh] w-full flex items-center justify-center overflow-hidden bg-slate-950"
     >
       {/* Background carousel */}
       <div className="absolute inset-0">
@@ -50,87 +44,70 @@ export function HeroSection() {
               ${index === activeIndex ? "opacity-100" : "opacity-0"}
             `}
           >
-            <ImageWithFallback
+            <img
               src={src}
               alt="Gym training and fitness"
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/70 to-slate-900/50" />
+            <div className="absolute inset-0 bg-gradient-to-b from-slate-950/90 via-slate-950/70 to-slate-950/90 lg:bg-gradient-to-r" />
           </div>
         ))}
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 w-full max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-8 flex flex-col items-start pt-12 md:pt-16">
-        {/* Title */}
-        <div className="space-y-0 mb-4 md:mb-6 mt-6 md:mt-10">
+      {/* Content Container */}
+      <div className="relative z-10 w-full max-w-7xl px-6 sm:px-10 lg:px-12 flex flex-col items-center lg:items-start text-center lg:text-left pt-20 pb-12 lg:pt-0">
+        
+        {/* Main Title Typography */}
+        <div className="flex flex-col mb-6 md:mb-8">
           {titleWords.map((word, index) => {
             const isFilled = index % 2 === 0;
             return (
               <span
                 key={word}
                 className={`
-                  block text-[42px] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-[0.15em]
-                  leading-[0.9] uppercase
-                  ${isFilled ? "text-white" : "text-transparent"}
-                  ${isFilled ? "" : "stroke-text"}
+                  block font-bold uppercase tracking-[0.05em] sm:tracking-[0.1em] lg:tracking-[0.15em]
+                  text-[12vw] sm:text-[10vw] md:text-7xl lg:text-8xl xl:text-9xl
+                  leading-[0.85] sm:leading-[0.9]
+                  ${isFilled ? "text-white" : "text-transparent stroke-text"}
                 `}
-                style={{
-                  fontFamily:
-                    "'Bebas Neue', 'Teko', sans-serif",
-                }}
+                style={{ fontFamily: "'Bebas Neue', sans-serif" }}
               >
-                <span
-                  className={`
-                    inline-block
-                    ${isFilled ? "" : "stroke-text-inner"}
-                  `}
-                >
-                  {word}
-                </span>
+                {word}
               </span>
             );
           })}
         </div>
 
         {/* Subtitle */}
-        <p className="text-slate-100/80 max-w-xl text-[15px] sm:text-base lg:text-xl mb-6 md:mb-10 font-light">
+        <p className="text-slate-200/90 max-w-md md:max-w-lg lg:max-w-xl text-sm sm:text-base md:text-lg lg:text-xl mb-10 lg:mb-12 font-light leading-relaxed">
           High-performance training, expert coaching, and
           recovery under one roof so you can feel stronger, move
           better, and stay consistent for life.
         </p>
 
-        {/* CTAs */}
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center w-full sm:w-auto">
+        {/* Call to Actions */}
+        <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto items-center">
           <button
             onClick={scrollToBooking}
             className="
-              h-12 md:h-14 px-6 md:px-8 mb-4 md:mb-8 rounded-full inline-flex items-center justify-center gap-2
-              text-sm sm:text-base font-semibold
-              border-2 transition-all
-              hover:scale-105 hover:shadow-2xl
-              group w-full sm:w-auto
+              h-14 lg:h-16 px-8 lg:px-10 rounded-full inline-flex items-center justify-center gap-3
+              text-base lg:text-lg font-bold uppercase tracking-wider
+              transition-all hover:scale-105 active:scale-95 shadow-xl hover:shadow-gold/20
+              group w-full sm:w-auto text-slate-950
             "
             style={{
-              background:"linear-gradient(135deg, #D4AF37, #F4E4B6)",
-              borderColor: "var(--color-gold)",
+              background: "linear-gradient(135deg, #D4AF37, #F4E4B6)",
             }}
           >
-            <span>Book Your Free Session</span>
-            <ArrowRight
-              size={18}
-              className="transition-transform group-hover:translate-x-1"
-            />
+            <span>Start Training</span>
+            <ArrowRight size={20} className="transition-transform group-hover:translate-x-1" />
           </button>
 
           <button
             className="
-              h-12 md:h-14 px-6 md:px-8 mb-4 md:mb-8 rounded-full inline-flex items-center justify-center
-              text-slate-50 text-sm sm:text-base font-medium
-              border border-slate-100/50 bg-white/5
-              backdrop-blur-md
-              hover:bg-white/10 hover:border-white
-              transition-all w-full sm:w-auto
+              h-14 lg:h-16 px-8 lg:px-10 rounded-full inline-flex items-center justify-center
+              text-slate-50 text-base font-medium border border-slate-100/30 bg-white/5
+              backdrop-blur-lg hover:bg-white/10 hover:border-white transition-all w-full sm:w-auto
             "
           >
             Explore Memberships
@@ -138,38 +115,32 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce hidden md:block">
-        <ChevronDown size={40} className="text-white" />
+      {/* Mobile-friendly Scroll Indicator */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce flex flex-col items-center gap-1 opacity-50 sm:opacity-100">
+        <span className="text-[10px] uppercase tracking-[0.3em] text-white hidden sm:block">Scroll</span>
+        <ChevronDown size={30} className="text-white" />
       </div>
 
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Teko:wght@600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
         
         .stroke-text {
-          -webkit-text-stroke-width: 2px;
-          -webkit-text-stroke-color: rgba(255, 255, 255, 0.9);
+          -webkit-text-stroke-width: 1px;
+          -webkit-text-stroke-color: rgba(255, 255, 255, 0.8);
         }
-        .stroke-text-inner {
-          color: transparent;
-        }
-        @media (min-width: 640px) {
+        
+        @media (min-width: 768px) {
           .stroke-text {
-            -webkit-text-stroke-width: 2.5px;
+            -webkit-text-stroke-width: 2px;
           }
-            space-y-3
         }
 
         @keyframes bounce {
-          0%, 100% {
-            transform: translateX(-50%) translateY(0);
-          }
-          50% {
-            transform: translateX(-50%) translateY(-10px);
-          }
+          0%, 100% { transform: translateX(-50%) translateY(0); }
+          50% { transform: translateX(-50%) translateY(-10px); }
         }
         .animate-bounce {
-          animation: bounce 2s infinite;
+          animation: bounce 2s infinite ease-in-out;
         }
       `}</style>
     </section>

@@ -110,7 +110,7 @@ export function TestimonialsSection() {
       <div className="pointer-events-none absolute -top-40 -right-32 h-80 w-80 rounded-full bg-amber-500/20 blur-3xl animate-pulse" />
       <div className="pointer-events-none absolute -bottom-40 -left-32 h-80 w-80 rounded-full bg-amber-400/10 blur-3xl" />
 
-      <div className="relative max-w-[1440px] mx-auto">
+      <div className="relative max-w-[1440px] mx-auto mt-7 pt-10">
         {/* Section Header */}
         <h2 className="text-center mb-4 text-3xl md:text-4xl font-semibold text-white tracking-tight">
           What Our Members Say

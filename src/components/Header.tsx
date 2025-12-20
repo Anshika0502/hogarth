@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
 interface HeaderProps {
@@ -21,118 +21,145 @@ export function Header({
   const isDashboard = currentView === "dashboard";
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-black/70 backdrop-blur-md border-b border-white/10">
-      <div className="max-w-[1440px] mx-auto px-4 md:px-6 h-[88px] md:h-[80px] flex items-center justify-between">
+  /* Lock scroll on mobile menu */
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "unset";
+  }, [mobileOpen]);
 
-        {/* LEFT LOGO */}
+  const handleMobileNav = (action: () => void) => {
+    action();
+    setMobileOpen(false);
+  };
+
+  return (
+    // ✅ FIX: much higher z-index
+    <header className="fixed top-0 left-0 right-0 z-[9999] bg-black border-b border-white/10">
+
+      <div className="bg-black max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 h-[64px] sm:h-[70px] md:h-[90px] flex items-center justify-between">
+
+        {/* LOGO */}
         <div
-          className="cursor-pointer"
+          className="cursor-pointer group flex flex-col"
           onClick={() => {
             onNavigate("landing");
             setMobileOpen(false);
           }}
         >
-          <h1 className="text-[28px] md:text-[32px] tracking-wide text-[#D4AF37] font-[Playfair Display] leading-none">
+          <h1 className="text-[20px] sm:text-[22px] md:text-[26px] lg:text-[32px] tracking-wide text-[#D4AF37] font-serif leading-none">
             The Hogarth
           </h1>
-          <p className="text-[12px] md:text-[13px] tracking-widest uppercase text-white/70 mt-1">
+          <p className="text-[9px] sm:text-[10px] md:text-[11px] tracking-[0.25em] uppercase text-white/50 mt-1">
             Health Club
           </p>
         </div>
 
         {/* DESKTOP NAV */}
-        <nav className="hidden md:flex items-center gap-10">
+        <nav className="hidden xl:flex items-center gap-14 bg-black">
           {isDashboard ? (
             <button
               onClick={() => onNavigate("landing")}
-              className="text-[#D4AF37] font-medium border px-4 py-2 border-[#D4AF37] rounded-lg"
+              className="absolute right-4 text-[#D4AF37] font-medium border px-5 py-2 border-[#D4AF37]/50 rounded-full hover:bg-[#D4AF37] hover:text-black transition-all mr-4rem"
             >
               Back to Site
             </button>
           ) : (
             <>
               <NavItem label="Home" active={activeNav === "home"} onClick={() => onNavigate("landing")} />
-              <NavItem label="Reformer Pilates" active={activeNav === "reformer-pilates"} onClick={() => onServiceSelect("reformer-pilates")} />
-              <NavItem label="Gym & Fitness" active={activeNav === "gym-fitness"} onClick={() => onServiceSelect("gym-fitness")} />
-              <NavItem label="Tennis & Swim" active={activeNav === "tennis-swim"} onClick={() => onServiceSelect("tennis-swim")} />
-              <NavItem label="Beauty & Spa" active={activeNav === "beauty-spa"} onClick={() => onServiceSelect("beauty-spa")} />
+              <NavItem label="Pilates" active={activeNav === "reformer-pilates"} onClick={() => onServiceSelect("reformer-pilates")} />
+              <NavItem label="Gym" active={activeNav === "gym-fitness"} onClick={() => onServiceSelect("gym-fitness")} />
+              <NavItem label="Tennis" active={activeNav === "tennis-swim"} onClick={() => onServiceSelect("tennis-swim")} />
+              <NavItem label="Spa" active={activeNav === "beauty-spa"} onClick={() => onServiceSelect("beauty-spa")} />
               <NavItem label="Memberships" active={activeNav === "membership"} onClick={onMembershipClick} />
               <NavItem label="Dashboard" active={false} onClick={() => onNavigate("dashboard")} />
             </>
           )}
         </nav>
 
-        {/* DESKTOP CTA */}
-        {!isDashboard && (
+        {/* ACTIONS */}
+        <div className="flex items-center gap-3 sm:gap-4">
+          {!isDashboard && (
+            <button
+              onClick={onJoinUsClick}
+              className="hidden md:block px-5 lg:px-6 py-2.5 rounded-full bg-gradient-to-r from-[#D4AF37] to-[#F4E4B6] text-black text-sm font-bold uppercase tracking-wider hover:scale-105 transition-all"
+            >
+              Join Us
+            </button>
+          )}
+
+          {/* MOBILE TOGGLE */}
           <button
-            onClick={onJoinUsClick}
-            className="hidden md:block px-8 py-3 rounded-lg bg-gradient-to-r from-[#D4AF37] to-[#F4E4B6] text-black font-semibold"
+            className="xl:hidden p-2 text-[#D4AF37] hover:bg-white/5 rounded-full transition "
+            onClick={() => setMobileOpen(!mobileOpen)}
           >
-            Join Us
-          </button>
-        )}
-
-        {/* MOBILE MENU BUTTON */}
-        <button
-          className="md:hidden text-[#D4AF37]"
-          onClick={() => setMobileOpen(!mobileOpen)}
-        >
-          {mobileOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
-      </div>
-
-      {/* MOBILE MENU */}
-      {mobileOpen && !isDashboard && (
-        <div className="md:hidden bg-black/95 border-t border-white/10 px-6 py-6 space-y-4">
-          <MobileNav label="Home" onClick={() => onNavigate("landing")} />
-          <MobileNav label="Reformer Pilates" onClick={() => onServiceSelect("reformer-pilates")} />
-          <MobileNav label="Gym & Fitness" onClick={() => onServiceSelect("gym-fitness")} />
-          <MobileNav label="Tennis & Swim" onClick={() => onServiceSelect("tennis-swim")} />
-          <MobileNav label="Beauty & Spa" onClick={() => onServiceSelect("beauty-spa")} />
-          <MobileNav label="Memberships" onClick={onMembershipClick} />
-          <MobileNav label="Dashboard" onClick={() => onNavigate("dashboard")} />
-
-          <button
-            onClick={onJoinUsClick}
-            className="w-full mt-4 py-3 rounded-lg bg-gradient-to-r from-[#D4AF37] to-[#F4E4B6] text-black font-semibold"
-          >
-            Join Us
+            {mobileOpen ? <X size={26} /> : <Menu size={26} />}
           </button>
         </div>
-      )}
+      </div>
+
+      {/* ✅ FIXED MOBILE MENU */}
+      <div
+  className={`fixed left-0 right-0 bottom-0
+  top-[64px] sm:top-[70px] md:top-[90px]
+  bg-black bg-opacity-100
+  z-[9998] xl:hidden transition-transform duration-500
+  ${mobileOpen ? "translate-x-0" : "translate-x-full"}
+  `}
+>
+        {/* ✅ FIX: force scroll */}
+      <div
+  className="
+    flex flex-col
+    px-6 sm:px-10 py-6
+    overflow-y-auto overscroll-contain touch-pan-y
+    h-[calc(100vh-64px)]
+    sm:h-[calc(100vh-70px)]
+    md:h-[calc(100vh-90px)]
+  "
+>
+          <div className="flex flex-col gap-6">
+            <MobileNav label="Home" onClick={() => handleMobileNav(() => onNavigate("landing"))} />
+            <MobileNav label="Reformer Pilates" onClick={() => handleMobileNav(() => onServiceSelect("reformer-pilates"))} />
+            <MobileNav label="Gym & Fitness" onClick={() => handleMobileNav(() => onServiceSelect("gym-fitness"))} />
+            <MobileNav label="Tennis & Swim" onClick={() => handleMobileNav(() => onServiceSelect("tennis-swim"))} />
+            <MobileNav label="Beauty & Spa" onClick={() => handleMobileNav(() => onServiceSelect("beauty-spa"))} />
+            <MobileNav label="Memberships" onClick={() => handleMobileNav(onMembershipClick)} />
+            <MobileNav label="Dashboard" onClick={() => handleMobileNav(() => onNavigate("dashboard"))} />
+          </div>
+
+          {/* ✅ FIX: safe bottom spacing */}
+          <div className="mt-auto pt-8 pb-28">
+            <button
+              onClick={() => handleMobileNav(onJoinUsClick)}
+              className="w-full py-4 sm:py-5 rounded-2xl bg-[#D4AF37] text-black text-lg sm:text-xl font-bold uppercase tracking-widest"
+            >
+              Join Us Now
+            </button>
+            <p className="text-center text-white/30 text-xs sm:text-sm mt-6 uppercase tracking-[0.25em]">
+              The Hogarth Health Club
+            </p>
+          </div>
+        </div>
+      </div>
     </header>
   );
 }
 
-/* Desktop Nav Item */
-function NavItem({
-  label,
-  active,
-  onClick,
-}: {
-  label: string;
-  active: boolean;
-  onClick: () => void;
-}) {
+/* DESKTOP NAV ITEM */
+function NavItem({ label, active, onClick }: { label: string; active: boolean; onClick: () => void }) {
   return (
     <button
       onClick={onClick}
-      className={`relative transition ${
-        active ? "text-[#D4AF37]" : "text-white/80 hover:text-[#D4AF37]"
+      className={`relative text-[15px] font-medium tracking-wide ${
+        active ? "text-[#D4AF37]" : "text-white/70 hover:text-white"
       }`}
     >
       {label}
-      <span
-        className={`absolute -bottom-1 left-0 h-[2px] bg-[#D4AF37] transition-all ${
-          active ? "w-full" : "w-0"
-        }`}
-      />
+      <span className={`absolute -bottom-1 left-0 h-[1.5px] bg-[#D4AF37] transition-all ${active ? "w-full" : "w-0"}`} />
     </button>
   );
 }
 
-/* Mobile Nav Item */
+/* MOBILE NAV ITEM */
 function MobileNav({
   label,
   onClick,
@@ -143,9 +170,19 @@ function MobileNav({
   return (
     <button
       onClick={onClick}
-      className="block w-full text-left text-white text-6xl  tracking-wide hover:text-[#D4AF37]"
+      className="
+        block w-full text-left
+        text-white
+        text-xl sm:text-2xl md:text-3xl
+        font-serif tracking-tight
+        hover:text-[#D4AF37]
+        transition-colors
+        border-b border-white/10
+        py-4
+      "
     >
       {label}
     </button>
   );
 }
+

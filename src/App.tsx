@@ -5,10 +5,10 @@ import { HeroSection } from './components/HeroSection';
 import { ServicesSection } from './components/ServicesSection';
 import { WhyHogarthSection } from './components/WhyHogarthSection';
 import { TestimonialsSection } from './components/TestimonialsSection';
-import { BookingSection } from './components/BookingSection';
+import  BookingSection  from './components/BookingSection';
 import { Footer } from './components/Footer';
 import { FloatingBookButton } from './components/FloatingBookButton';
-import { Dashboard } from './components/Dashboard';
+import  Dashboard  from './components/Dashboard';
 import { ServiceBookingPage } from './components/ServiceBookingPage';
 
 export type ActiveNav =
@@ -77,7 +77,12 @@ export default function App() {
 
       {currentView === 'landing' && (
         <>
-          <HeroSection />
+        <div className="
+  pt-[64px]
+  sm:pt-[70px]
+  md:pt-[90px]
+">
+  <HeroSection />
           <ServicesSection onServiceSelect={handleServiceSelect} />
           <WhyHogarthSection />
           <TestimonialsSection />
@@ -86,17 +91,31 @@ export default function App() {
           </div>
           <Footer />
           <FloatingBookButton />
+</div>
+          
         </>
       )}
 
       {currentView === 'service-booking' && selectedService && (
-        <ServiceBookingPage
+        <div className="
+  pt-[64px]
+  sm:pt-[70px]
+  md:pt-[90px]
+">
+  <ServiceBookingPage
           serviceType={selectedService}
           onBack={() => handleNavigate('landing')}
         />
+</div>
+        
       )}
 
-      {currentView === 'dashboard' && <Dashboard />}
+      {currentView === 'dashboard' && 
+      <div className="
+  pt-[64px]
+  sm:pt-[70px]
+  md:pt-[90px]
+"><Dashboard /></div> }
     </ReservationProvider>
   );
 }

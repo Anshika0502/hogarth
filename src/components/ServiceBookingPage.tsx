@@ -140,364 +140,279 @@ export function ServiceBookingPage({ serviceType, onBack }: ServiceBookingPagePr
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] pt-[80px] w-screen">
+    <div className="min-h-screen bg-[#0a0a0a] pt-[70px] md:pt-[80px] w-full overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative h-[50vh] md:h-[60vh] min-h-[400px] md:min-h-[500px] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[40vh] md:h-[60vh] min-h-[350px] flex items-center justify-center overflow-hidden">
         <ImageWithFallback
           src={service.image1}
           alt={service.title}
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-[#0a0a0a]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-[#0a0a0a]" />
         
-        <div className="relative z-10 text-center px-4 md:px-6 max-w-4xl mx-auto">
-          <div className="inline-flex items-center gap-2 bg-[#1a1a1a]/80 border border-[#D4AF37]/30 rounded-full px-4 md:px-6 py-2 mb-4 md:mb-6 backdrop-blur-md">
-            <Sparkles size={14} className="text-[#D4AF37] md:size-4" />
-            <span className="text-[#D4AF37] text-[12px] md:text-[14px] font-medium tracking-wide uppercase">
+        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+          <div className="inline-flex items-center gap-2 bg-[#1a1a1a]/80 border border-[#D4AF37]/30 rounded-full px-4 py-1.5 mb-4 backdrop-blur-md">
+            <Sparkles size={14} className="text-[#D4AF37]" />
+            <span className="text-[#D4AF37] text-[10px] md:text-[12px] font-medium tracking-widest uppercase">
               Premium Experience
             </span>
           </div>
           
           <h1 
-            className="text-white mb-3 md:mb-4 text-[40px] md:text-[56px] lg:text-[72px] font-bold tracking-wider leading-none"
-            style={{ fontFamily: "'Bebas Neue', 'Oswald', sans-serif" }}
+            className="text-white mb-2 text-[36px] sm:text-[48px] md:text-[64px] lg:text-[80px] font-bold tracking-tight leading-tight px-2"
+            style={{ fontFamily: "'Bebas Neue', sans-serif" }}
           >
             {service.title}
           </h1>
           
-          <p className="text-white/80 text-[18px] md:text-[24px] lg:text-[28px] font-light tracking-wide">
+          <p className="text-white/80 text-[14px] sm:text-[18px] md:text-[22px] font-light max-w-2xl mx-auto">
             {service.subtitle}
           </p>
         </div>
       </section>
 
       {/* Content Section */}
-      <section className="max-w-[1200px] mx-auto px-4 md:px-6 py-8 md:py-16 mt-8">
-        {/* Description & Features */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mb-12 md:mb-16">
-          {/* Description */}
-          <div>
-            <h2 className="text-white mb-4 md:mb-6 text-[24px] md:text-[32px] font-bold">
-              About This Service
-            </h2>
-            <p className="text-gray-300 text-[16px] md:text-[18px] leading-relaxed mb-6 md:mb-8">
+      <section className="max-w-[1200px] mx-auto px-4 sm:px-6 py-12 md:py-20">
+        
+        {/* Description & Features Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 mb-20">
+          <div className="space-y-4">
+            <h2 className="text-white text-[28px] md:text-[36px] font-bold">About This Service</h2>
+            <p className="text-gray-400 text-[16px] md:text-[18px] leading-relaxed">
               {service.description}
             </p>
           </div>
 
-          {/* Features */}
-          <div>
-            <h2 className="text-white mb-4 md:mb-6 text-[24px] md:text-[32px] font-bold">
-              What's Included
-            </h2>
-            <ul className="space-y-3 md:space-y-4">
+          <div className="space-y-6">
+            <h2 className="text-white text-[28px] md:text-[36px] font-bold">What's Included</h2>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
               {service.features.map((feature, index) => (
-                <li key={index} className="flex items-start gap-2 md:gap-3">
-                  <CheckCircle2 size={20} className="text-[#D4AF37] flex-shrink-0 mt-1 md:size-6" />
-                  <span className="text-gray-300 text-[14px] md:text-[16px]">{feature}</span>
+                <li key={index} className="flex items-start gap-3">
+                  <CheckCircle2 size={20} className="text-[#D4AF37] flex-shrink-0 mt-1" />
+                  <span className="text-gray-300 text-[15px]">{feature}</span>
                 </li>
               ))}
             </ul>
           </div>
         </div>
-        <div className="mb-0 mt-48">
-          <h2 className="text-[#D4AF37]  text-[24px] md:text-[52px] font-bold text-center ">
-              The Hogarth Experience
-        </h2>
-          <div className="w-120px;
-          h-4px;
-          bg-linear-gradient(
-            90deg,
-            transparent,
-            #d4af37,
-            transparent
-          );
-          m-0 auto 30px;
-          animation: expandWidth 1s ease-out;"></div>
+
+        {/* Experience Cards Section */}
+        <div className="text-center mb-12">
+          <h2 className="text-[#D4AF37] text-[32px] md:text-[52px] font-bold uppercase" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+            The Hogarth Experience
+          </h2>
+          <div className="h-1 w-24 bg-[#D4AF37] mx-auto mt-4 rounded-full" />
         </div>
-      
-  
-        <div className="flex justify-center gap-20 mt-24 mb-44 ">
-          
 
-          <div className="border-t border-[#D4AF37] p-2 rounded-t-full shadow-lg">
-            <div className="relative w-72 h-96 overflow-hidden rounded-t-full border-t-4 border-[#D4AF37]">
-  {/* IMAGE */}
-  <img
-    src={service.image2}
-    className="absolute inset-0 w-full h-full object-cover"
-  />
+        {/* Responsive Arched Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-24 items-center">
+          {/* CARD 1 */}
+          <div className="mx-auto border-t border-[#D4AF37] p-1.5 rounded-t-full w-full max-w-[280px]">
+            <div className="relative aspect-[3/4] overflow-hidden rounded-t-full border-t-4 border-[#D4AF37]">
+              <img src={service.image2} className="absolute inset-0 w-full h-full object-cover" alt="Experience 1" />
+              <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/40 to-[#0a0a0a]" />
+              <div className="absolute inset-0 flex items-center justify-center p-6 text-center">
+                <span className="text-[#D4AF37] text-[32px] font-bold leading-tight uppercase" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                  {service.cardHighlights[0]}
+                </span>
+              </div>
+            </div>
+          </div>
 
-  {/* FADE */}
-  <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/30 to-[#0a0a0a]" />
+          {/* CARD 2 - Inverted Arch */}
+          <div className="mx-auto border-b border-[#D4AF37] p-1.5 rounded-b-full w-full max-w-[280px] sm:translate-y-8 lg:translate-y-12">
+            <div className="relative aspect-[3/4] overflow-hidden rounded-b-full border-b-4 border-[#D4AF37]">
+              <img src={service.image3} className="absolute inset-0 w-full h-full object-cover" alt="Experience 2" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/0 via-black/40 to-[#0a0a0a]" />
+              <div className="absolute inset-0 flex items-center justify-center p-6 text-center">
+                <span className="text-[#D4AF37] text-[32px] font-bold leading-tight uppercase" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                  {service.cardHighlights[1]}
+                </span>
+              </div>
+            </div>
+          </div>
 
-  {/* TEXT */}
-  <div className="relative z-10 h-full flex items-center justify-center px-6 text-center">
-    <p className="text-xl font-semibold">
-      <span className="text-[#D4AF37] text-[40px]">{service.cardHighlights[0]}</span>{" "}
-      <span className="text-black text-[36px] font-bold"></span>
-    </p>
-  </div>
-</div>
-</div>
-  
-
-          <div className="border-b border-[#D4AF37] p-2 rounded-b-full shadow-lg">
-             <div className="relative w-72 h-96 rounded-b-full overflow-hidden border-b-4 border-[#D4AF37]">
-
-  {/* IMAGE */}
-  <img
-    src={service.image3}
-    className="absolute inset-0 w-full h-full object-cover"
-  />
-
-  {/* FADE OUT TO TOP (IMPORTANT) */}
-  <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-black/40 to-[#0a0a0a]" />
-
-  {/* CONTENT */}
-  <div className="relative z-10 h-full flex items-center justify-center px-6 text-center pb-18">
-   <p className="text-xl font-semibold">
-      <span className="text-[#D4AF37] text-[40px]">{service.cardHighlights[1]}</span>{" "}
-      <span className="text-black"></span>
-    </p>
-  </div>
-            
-</div>
- 
-
-</div>
-
-
-
-  {/* CARD 3 */}
-  
-          <div className="border-t border-[#D4AF37] p-2 rounded-t-full shadow-lg">
-            <div className="relative w-72 h-96 overflow-hidden rounded-t-full border-t-4 border-[#D4AF37]">
-  {/* IMAGE */}
-  <img
-    src={service.image4}
-    className="absolute inset-0 w-full h-full object-cover"
-  />
-
-  {/* FADE */}
-  <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/30 to-[#0a0a0a]" />
-
-  {/* TEXT */}
-  <div className="relative z-10 h-full flex items-center justify-center px-6 text-center">
-    <p className="text-xl font-semibold">
-      <span className="text-[#D4AF37] text-[40px]">{service.cardHighlights[2]}</span>{" "}
-      <span className="text-black text-[36px] font-bold"></span>
-    </p>
-  </div>
-</div>
+          {/* CARD 3 */}
+          <div className="mx-auto border-t border-[#D4AF37] p-1.5 rounded-t-full w-full max-w-[280px] sm:col-span-2 lg:col-span-1">
+            <div className="relative aspect-[3/4] overflow-hidden rounded-t-full border-t-4 border-[#D4AF37]">
+              <img src={service.image4} className="absolute inset-0 w-full h-full object-cover" alt="Experience 3" />
+              <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/40 to-[#0a0a0a]" />
+              <div className="absolute inset-0 flex items-center justify-center p-6 text-center">
+                <span className="text-[#D4AF37] text-[32px] font-bold leading-tight uppercase" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                  {service.cardHighlights[2]}
+                </span>
+              </div>
+            </div>
           </div>
         </div>
-  
-
-        
 
         {/* Booking Form */}
-        <div className="bg-[#1a1a1a] rounded-2xl md:rounded-3xl p-6 md:p-8 lg:p-12 shadow-2xl border border-[#2a2a2a] backdrop-blur-xl relative overflow-hidden group hover:border-[#D4AF37]/30 transition-all duration-500">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-          <div className="relative z-10">
-            <div className="text-center mb-8 md:mb-12">
-              <h2 className="text-white mb-3 md:mb-4 text-[32px] md:text-[42px] font-bold">
-                Book Your Session
-              </h2>
-              <p className="text-gray-300 text-[16px] md:text-[18px]">
-                Reserve your spot and start your journey today
-              </p>
+        <div id="booking-form" className="bg-[#1a1a1a] rounded-2xl p-6 sm:p-10 md:p-16 border border-[#2a2a2a] relative overflow-hidden transition-all duration-500 hover:border-[#D4AF37]/20">
+          <div className="relative z-10 max-w-3xl mx-auto">
+            <div className="text-center mb-10">
+              <h2 className="text-white mb-2 text-[28px] md:text-[42px] font-bold">Book Your Session</h2>
+              <p className="text-gray-400">Complete the form below to secure your premium experience.</p>
             </div>
 
-            {isSubmitted ? (
-              <div className="text-center py-12 md:py-16 animate-fade-in">
-                <div className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 bg-[#D4AF37]/10 rounded-full mb-4 md:mb-6 animate-scale-in">
-                  <CheckCircle2 size={40} className="text-[#D4AF37] md:size-12" />
-                </div>
-                <h3 className="text-white mb-3 md:mb-4 text-[24px] md:text-[32px] font-bold">
-                  Booking Confirmed!
-                </h3>
-                <p className="text-gray-400 text-[16px] md:text-[18px] mb-6 md:mb-8 max-w-[500px] mx-auto leading-relaxed">
-                  Your confirmation has been sent via email. Redirecting you back...
-                </p>
+            <form onSubmit={handleSubmit} className="space-y-6 md:space-y-8">
+            {/* Name */}
+            <div>
+              <label htmlFor="name" className="block text-gray-300 mb-2 md:mb-3 text-[14px] md:text-[15px] font-medium">
+                Full Name *
+              </label>
+              <input
+                type="text"
+                id="name"
+                required
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                className="w-full px-4 md:px-5 py-3 md:py-4 bg-[#0a0a0a] border-2 border-[#2a2a2a] rounded-xl text-white placeholder-gray-600 focus:outline-none focus:border-[#D4AF37] transition-all duration-300 hover:border-[#3a3a3a] text-[15px] md:text-base"
+                placeholder="Enter your full name"
+              />
+            </div>
+
+            {/* Email */}
+            <div>
+              <label htmlFor="email" className="block text-gray-300 mb-2 md:mb-3 text-[14px] md:text-[15px] font-medium">
+                Email Address *
+              </label>
+              <div className="relative">
+                <Mail size={18} className="absolute left-4 md:left-5 top-1/2 -translate-y-1/2 text-gray-500 md:size-5" />
+                <input
+                  type="email"
+                  id="email"
+                  required
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="peer w-full pl-12 md:pl-14 pr-4 md:pr-5 py-3 md:py-4 bg-[#0a0a0a] border-2 border-[#2a2a2a] rounded-xl text-white placeholder-gray-600 focus:outline-none focus:border-[#D4AF37] transition-all duration-300 hover:border-[#3a3a3a] text-[15px] md:text-base"
+                  placeholder="you@example.com"
+                />
               </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-6 md:space-y-8">
-                {/* Name */}
-                <div>
-                  <label htmlFor="name" className="block text-gray-300 mb-2 md:mb-3 text-[14px] md:text-[15px] font-medium">
-                    Full Name *
-                  </label>
+            </div>
+
+            {/* Phone */}
+            <div>
+              <label htmlFor="phone" className="block text-gray-300 mb-2 md:mb-3 text-[14px] md:text-[15px] font-medium">
+                Phone Number *
+              </label>
+              <div className="relative">
+                <Phone size={18} className="absolute left-4 md:left-5 top-1/2 -translate-y-1/2 text-gray-500 md:size-5" />
+                <input
+                  type="tel"
+                  id="phone"
+                  required
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  className="peer w-full pl-12 md:pl-14 pr-4 md:pr-5 py-3 md:py-4 bg-[#0a0a0a] border-2 border-[#2a2a2a] rounded-xl text-white placeholder-gray-600 focus:outline-none focus:border-[#D4AF37] transition-all duration-300 hover:border-[#3a3a3a] text-[15px] md:text-base"
+                  placeholder="Enter your phone number"
+                />
+              </div>
+            </div>
+
+            {/* Service (pre-filled, read-only) */}
+            <div>
+              <label htmlFor="service" className="block text-gray-300 mb-2 md:mb-3 text-[14px] md:text-[15px] font-medium">
+                Selected Service
+              </label>
+              <input
+                type="text"
+                id="service"
+                value={formData.service}
+                readOnly
+                className="w-full px-4 md:px-5 py-3 md:py-4 bg-[#0a0a0a] border-2 border-[#D4AF37]/30 rounded-xl text-[#D4AF37] cursor-not-allowed text-[15px] md:text-base"
+              />
+            </div>
+
+            {/* Date and Time */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+              <div>
+                <label htmlFor="date" className="block text-gray-300 mb-2 md:mb-3 text-[14px] md:text-[15px] font-medium">
+                  Preferred Date *
+                </label>
+                <div className="relative">
+                  <Calendar size={18} className="absolute left-4 md:left-5 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none z-10 md:size-5" />
                   <input
-                    type="text"
-                    id="name"
+                    type="date"
+                    id="date"
                     required
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 md:px-5 py-3 md:py-4 bg-[#0a0a0a] border-2 border-[#2a2a2a] rounded-xl text-white placeholder-gray-600 focus:outline-none focus:border-[#D4AF37] transition-all duration-300 hover:border-[#3a3a3a] text-[15px] md:text-base"
-                    placeholder="Enter your full name"
+                    value={formData.date}
+                    onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+                    className="w-full pl-12 md:pl-14 pr-4 md:pr-5 py-3 md:py-4 bg-[#0a0a0a] border-2 border-[#2a2a2a] rounded-xl text-white focus:outline-none focus:border-[#D4AF37] transition-all duration-300 hover:border-[#3a3a3a] [color-scheme:dark] text-[15px] md:text-base"
+                    min={new Date().toISOString().split("T")[0]}
                   />
                 </div>
+              </div>
 
-                {/* Email */}
-                <div>
-                  <label htmlFor="email" className="block text-gray-300 mb-2 md:mb-3 text-[14px] md:text-[15px] font-medium">
-                    Email Address *
-                  </label>
-                  <div className="relative">
-                    <Mail size={18} className="absolute left-4 md:left-5 top-1/2 -translate-y-1/2 text-gray-500 md:size-5" />
-                    <input
-                      type="email"
-                      id="email"
-                      required
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="peer w-full pl-12 md:pl-14 pr-4 md:pr-5 py-3 md:py-4 bg-[#0a0a0a] border-2 border-[#2a2a2a] rounded-xl text-white placeholder-gray-600 focus:outline-none focus:border-[#D4AF37] transition-all duration-300 hover:border-[#3a3a3a] text-[15px] md:text-base"
-                      placeholder="you@example.com"
-                    />
-                  </div>
+              <div>
+                <label htmlFor="time" className="block text-gray-300 mb-2 md:mb-3 text-[14px] md:text-[15px] font-medium">
+                  Preferred Time *
+                </label>
+                <div className="relative">
+                  <Clock size={18} className="absolute left-4 md:left-5 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none z-10 md:size-5" />
+                  <select
+                    id="time"
+                    required
+                    value={formData.time}
+                    onChange={(e) => setFormData({ ...formData, time: e.target.value })}
+                    className="w-full pl-12 md:pl-14 pr-4 md:pr-5 py-3 md:py-4 bg-[#0a0a0a] border-2 border-[#2a2a2a] rounded-xl text-white focus:outline-none focus:border-[#D4AF37] transition-all duration-300 hover:border-[#3a3a3a] appearance-none cursor-pointer text-[15px] md:text-base"
+                    style={{
+                      backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%23D4AF37' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E")`,
+                      backgroundRepeat: "no-repeat",
+                      backgroundPosition: "right 1.25rem center",
+                    }}
+                  >
+                    <option value="" className="bg-[#1a1a1a]">Select time...</option>
+                    {times.map((time) => (
+                      <option key={time} value={time} className="bg-[#1a1a1a] text-white">
+                        {time}
+                      </option>
+                    ))}
+                  </select>
                 </div>
+              </div>
+            </div>
 
-                {/* Phone */}
-                <div>
-                  <label htmlFor="phone" className="block text-gray-300 mb-2 md:mb-3 text-[14px] md:text-[15px] font-medium">
-                    Phone Number *
-                  </label>
-                  <div className="relative">
-                    <Phone size={18} className="absolute left-4 md:left-5 top-1/2 -translate-y-1/2 text-gray-500 md:size-5" />
-                    <input
-                      type="tel"
-                      id="phone"
-                      required
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="peer w-full pl-12 md:pl-14 pr-4 md:pr-5 py-3 md:py-4 bg-[#0a0a0a] border-2 border-[#2a2a2a] rounded-xl text-white placeholder-gray-600 focus:outline-none focus:border-[#D4AF37] transition-all duration-300 hover:border-[#3a3a3a] text-[15px] md:text-base"
-                      placeholder="Enter your phone number"
-                    />
-                  </div>
-                </div>
+            {/* Submit Button */}
+            <button
+              type="submit"
+              disabled={!formData.name || !formData.email || !formData.phone || !formData.date || !formData.time}
+              className="w-full py-4 md:py-5 rounded-xl bg-[#D4AF37] text-[#0a0a0a] text-[16px] md:text-[18px] font-bold transition-all duration-300 hover:bg-[#f0c44a] hover:shadow-[0_0_40px_rgba(212,175,55,0.4)] hover:scale-[1.02] flex items-center justify-center gap-2 md:gap-3 group disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-[#D4AF37] disabled:hover:shadow-none disabled:hover:scale-100"
+            >
+              <CheckCircle2 size={20} className="group-hover:rotate-12 transition-transform duration-300 md:size-6" />
+              Confirm Reservation
+            </button>
 
-                {/* Service (pre-filled, read-only) */}
-                <div>
-                  <label htmlFor="service" className="block text-gray-300 mb-2 md:mb-3 text-[14px] md:text-[15px] font-medium">
-                    Selected Service
-                  </label>
-                  <input
-                    type="text"
-                    id="service"
-                    value={formData.service}
-                    readOnly
-                    className="w-full px-4 md:px-5 py-3 md:py-4 bg-[#0a0a0a] border-2 border-[#D4AF37]/30 rounded-xl text-[#D4AF37] cursor-not-allowed text-[15px] md:text-base"
-                  />
-                </div>
-
-                {/* Date and Time */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                  <div>
-                    <label htmlFor="date" className="block text-gray-300 mb-2 md:mb-3 text-[14px] md:text-[15px] font-medium">
-                      Preferred Date *
-                    </label>
-                    <div className="relative">
-                      <Calendar size={18} className="absolute left-4 md:left-5 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none z-10 md:size-5" />
-                      <input
-                        type="date"
-                        id="date"
-                        required
-                        value={formData.date}
-                        onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                        className="w-full pl-12 md:pl-14 pr-4 md:pr-5 py-3 md:py-4 bg-[#0a0a0a] border-2 border-[#2a2a2a] rounded-xl text-white focus:outline-none focus:border-[#D4AF37] transition-all duration-300 hover:border-[#3a3a3a] [color-scheme:dark] text-[15px] md:text-base"
-                        min={new Date().toISOString().split("T")[0]}
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label htmlFor="time" className="block text-gray-300 mb-2 md:mb-3 text-[14px] md:text-[15px] font-medium">
-                      Preferred Time *
-                    </label>
-                    <div className="relative">
-                      <Clock size={18} className="absolute left-4 md:left-5 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none z-10 md:size-5" />
-                      <select
-                        id="time"
-                        required
-                        value={formData.time}
-                        onChange={(e) => setFormData({ ...formData, time: e.target.value })}
-                        className="w-full pl-12 md:pl-14 pr-4 md:pr-5 py-3 md:py-4 bg-[#0a0a0a] border-2 border-[#2a2a2a] rounded-xl text-white focus:outline-none focus:border-[#D4AF37] transition-all duration-300 hover:border-[#3a3a3a] appearance-none cursor-pointer text-[15px] md:text-base"
-                        style={{
-                          backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%23D4AF37' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E")`,
-                          backgroundRepeat: "no-repeat",
-                          backgroundPosition: "right 1.25rem center",
-                        }}
-                      >
-                        <option value="" className="bg-[#1a1a1a]">Select time...</option>
-                        {times.map((time) => (
-                          <option key={time} value={time} className="bg-[#1a1a1a] text-white">
-                            {time}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Submit Button */}
-                <button
-                  type="submit"
-                  className="w-full py-4 md:py-5 rounded-xl bg-[#D4AF37] text-[#0a0a0a] text-[16px] md:text-[18px] font-bold transition-all duration-300 hover:bg-[#f0c44a] hover:shadow-[0_0_40px_rgba(212,175,55,0.4)] hover:scale-[1.02] flex items-center justify-center gap-2 md:gap-3 group"
-                >
-                  <CheckCircle2 size={20} className="group-hover:rotate-12 transition-transform duration-300 md:size-6" />
-                  Confirm Reservation
-                </button>
-
-                {/* Trust Badges */}
-                <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8 pt-4 md:pt-6 text-gray-400 text-[12px] md:text-[14px]">
-                  <div className="flex items-center gap-1.5 md:gap-2 hover:text-[#D4AF37] transition-colors duration-300">
-                    <Lock size={14} className="md:size-4" />
-                    <span>Secure Booking</span>
-                  </div>
-                  <div className="flex items-center gap-1.5 md:gap-2 hover:text-[#D4AF37] transition-colors duration-300">
-                    <CheckCircle2 size={14} className="md:size-4" />
-                    <span>24/7 Support</span>
-                  </div>
-                  <div className="flex items-center gap-1.5 md:gap-2 hover:text-[#D4AF37] transition-colors duration-300">
-                    <CheckCircle2 size={14} className="md:size-4" />
-                    <span>No Commitment</span>
-                  </div>
-                </div>
-              </form>
-            )}
+            {/* Trust Badges */}
+            <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8 pt-4 md:pt-6 text-gray-400 text-[12px] md:text-[14px]">
+              <div className="flex items-center gap-1.5 md:gap-2 hover:text-[#D4AF37] transition-colors duration-300">
+                <Lock size={14} className="md:size-4" />
+                <span>Secure Booking</span>
+              </div>
+              <div className="flex items-center gap-1.5 md:gap-2 hover:text-[#D4AF37] transition-colors duration-300">
+                <CheckCircle2 size={14} className="md:size-4" />
+                <span>24/7 Support</span>
+              </div>
+              <div className="flex items-center gap-1.5 md:gap-2 hover:text-[#D4AF37] transition-colors duration-300">
+                <CheckCircle2 size={14} className="md:size-4" />
+                <span>No Commitment</span>
+              </div>
+            </div>
+          </form>
           </div>
         </div>
       </section>
+    </div>
+  );
+}
 
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;600;700&display=swap');
-        
-        @keyframes fade-in {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-
-        @keyframes scale-in {
-          from {
-            opacity: 0;
-            transform: scale(0.8);
-          }
-          to {
-            opacity: 1;
-            transform: scale(1);
-          }
-        }
-
-        .animate-fade-in {
-          animation: fade-in 0.6s ease-out forwards;
-        }
-
-        .animate-scale-in {
-          animation: scale-in 0.5s ease-out forwards;
-        }
-      `}</style>
+// Reusable Label wrapper for cleaner code
+function FormGroup({ label, id, children }) {
+  return (
+    <div className="space-y-2">
+      <label htmlFor={id} className="block text-gray-400 text-sm font-medium ml-1">
+        {label}
+      </label>
+      {children}
     </div>
   );
 }

@@ -24,12 +24,12 @@ export function FloatingBookButton() {
   return (
     <button
       onClick={scrollToBooking}
-      className="fixed bottom-8 right-8 z-40 flex items-center gap-3 px-6 py-4 rounded-full text-white shadow-2xl transition-all hover:scale-105 animate-pulse-subtle"
+      className="fixed bottom-8 right-8 z-40 flex items-center gap-3 px-6 py-4 rounded-full text-white shadow-2xl transition-all hover:scale-105 animate-pulse-subtle bg-gradient-to-r from-[#D4AF37] to-[#F4E4B6]"
       style={{ backgroundColor: 'var(--color-gold)' }}
       aria-label="Book now"
     >
       <Calendar size={24} />
-      <span className="hidden md:inline">Book Now</span>
+      <span className="hidden md:inline text-black">Book Now</span>
 
       <style>{`
         @keyframes pulse-subtle {

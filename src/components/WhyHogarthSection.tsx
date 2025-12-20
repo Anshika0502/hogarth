@@ -145,7 +145,7 @@ export function WhyHogarthSection() {
         </div>
       </div>
 
-      <style jsx>{`
+      <style >{`
         /* Gym-style font pairing: Oswald (headings) + Rajdhani (body). [web:2][web:5] */
         @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Rajdhani:wght@300;400;500;600&display=swap");
 
