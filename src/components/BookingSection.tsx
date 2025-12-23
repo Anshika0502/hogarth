@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useReservations } from "../contexts/ReservationContext";
 import {
   Calendar,
   Clock,
@@ -10,6 +11,7 @@ import {
 } from "lucide-react";
 
 export default function BookingSection() {
+  const { addReservation } = useReservations();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -57,6 +59,8 @@ export default function BookingSection() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!isFormComplete) return;
+
+    addReservation(formData);
     setIsLoading(true);
     setTimeout(() => {
       setIsSubmitted(true);

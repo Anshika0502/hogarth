@@ -58,15 +58,15 @@ export function HeroSection() {
       <div className="relative z-10 w-full max-w-7xl px-6 sm:px-10 lg:px-12 flex flex-col items-center lg:items-start text-center lg:text-left pt-20 pb-12 lg:pt-0">
         
         {/* Main Title Typography */}
-        <div className="flex flex-col mb-6 md:mb-8">
+        <div className="flex flex-col mb-6 md:mb-8 mt-10">
           {titleWords.map((word, index) => {
             const isFilled = index % 2 === 0;
             return (
               <span
                 key={word}
                 className={`
-                  block font-bold uppercase tracking-[0.05em] sm:tracking-[0.1em] lg:tracking-[0.15em]
-                  text-[12vw] sm:text-[10vw] md:text-7xl lg:text-8xl xl:text-9xl
+                  block font-bold uppercase  tracking-[0.05em] sm:tracking-[0.1em] lg:tracking-[0.15em]
+                  text-[12vw] sm:text-[10vw] md:text-6xl lg:text-7xl xl:text-8xl
                   leading-[0.85] sm:leading-[0.9]
                   ${isFilled ? "text-white" : "text-transparent stroke-text"}
                 `}
@@ -99,8 +99,8 @@ export function HeroSection() {
               background: "linear-gradient(135deg, #D4AF37, #F4E4B6)",
             }}
           >
-            <span>Start Training</span>
-            <ArrowRight size={20} className="transition-transform group-hover:translate-x-1" />
+            <span className="book-session-btn">Book Your Free Session</span>
+            <ArrowRight size={20} className="transition-transform group-hover:translate-x-1 " />
           </button>
 
           <button
@@ -134,6 +134,15 @@ export function HeroSection() {
             -webkit-text-stroke-width: 2px;
           }
         }
+
+        .book-session-btn {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 22px;
+        font-weight: 400;
+        letter-spacing: 1.2px;
+        padding-top:4px;
+
+      }
 
         @keyframes bounce {
           0%, 100% { transform: translateX(-50%) translateY(0); }

@@ -238,6 +238,7 @@ export function ServicesSection({
             scale(1.02);
           box-shadow: 0 20px 40px
             rgba(0, 0, 0, 0.6);
+          border-color: rgba(255, 215, 0, 0.7);
         }
 
         /* IMAGE */
@@ -283,12 +284,17 @@ export function ServicesSection({
           color: white;
           text-transform: uppercase;
           letter-spacing: 2px;
+          
         }
+        .service-icon-wrapper {
+        color: #d4af37;
+      }
 
         .service-description {
           color: #b8b8b8;
           margin: 16px 0 20px;
           line-height: 1.6;
+          height: 120px;
         }
 
         .service-cta-button {

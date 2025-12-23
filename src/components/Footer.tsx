@@ -40,7 +40,7 @@ export function Footer() {
                 fontFamily: "Playfair Display, serif",
               }}
             >
-              The Hogarth
+              The Company
             </h3>
             <p className="text-[#D4AF37]/80 text-[18px] mb-6 font-light tracking-wider">
               Health Club
@@ -98,7 +98,7 @@ export function Footer() {
                 />
                 <div>
                   <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
-                    The Hogarth Health Club
+                    The Comapny Health Club
                   </p>
                   <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
                     Chiswick, West London
@@ -128,7 +128,7 @@ export function Footer() {
                   className="flex-shrink-0 text-[#D4AF37]/70 group-hover:text-[#D4AF37] transition-colors duration-300"
                 />
                 <span className="group-hover:tracking-wide transition-all duration-300 break-all">
-                  info@hogarthhealthclub.com
+                  info@companyhealthclub.com
                 </span>
               </a>
             </div>

@@ -78,10 +78,10 @@ export function Analytics() {
     : 0;
 
   return (
-    <div className="space-y-6 max-w-[1400px]">
+    <div className="space-y-6 max-w-[1400px] ">
       {/* Key Metrics - Compact 2 rows */}
       <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
-        <div className="w-96 bg-gradient-to-br from-white/[0.06] to-white/[0.02] shadow-[0_10px_50px_rgba(0,0,0,0.6)] rounded-xl p-4 border border-white/40 hover:border-[#10B981] transition-all">
+        <div className="sm:sm:w-96 bg-gradient-to-br from-white/[0.06] to-white/[0.02] shadow-[0_10px_50px_rgba(0,0,0,0.6)] rounded-xl py-4 px-2 sm:p-4 border border-white/40 hover:border-[#10B981] transition-all">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-[#10B981]/20 rounded-lg">
               <Target size={20} style={{ color: '#10B981' }} />
@@ -95,13 +95,13 @@ export function Analytics() {
           </div>
         </div>
 
-        <div className="w-96 bg-gradient-to-br from-white/[0.06] to-white/[0.02] shadow-[0_10px_50px_rgba(0,0,0,0.6)] rounded-xl p-4  border border-white/40 hover:border-[#EF4444] transition-all">
+        <div className="sm:w-96 bg-gradient-to-br from-white/[0.06] to-white/[0.02] shadow-[0_10px_50px_rgba(0,0,0,0.6)] rounded-xl py-4 px-2 sm:p-4border border-white/40 hover:border-[#EF4444] transition-all">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-[#EF4444]/20 rounded-lg">
               <TrendingUp size={20} style={{ color: '#EF4444' }} />
             </div>
             <div>
-              <p className="text-gray-400 text-[11px] uppercase tracking-wide">Cancellation</p>
+              <p className="text-gray-400  text-[11px] uppercase tracking-wide">Cancellation</p>
               <p className="text-[28px] m-0" style={{ fontFamily: 'Bebas Neue, Impact, sans-serif' }}>
                 {cancellationRate}%
               </p>
@@ -109,7 +109,7 @@ export function Analytics() {
           </div>
         </div>
 
-        <div className="w-96 bg-gradient-to-br from-white/[0.06] to-white/[0.02] shadow-[0_10px_50px_rgba(0,0,0,0.6)] rounded-xl p-4 border border-white/40 hover:border-[#D4AF37] transition-all">
+        <div className="sm:w-96 bg-gradient-to-br from-white/[0.06] to-white/[0.02] shadow-[0_10px_50px_rgba(0,0,0,0.6)] rounded-xl  py-4 px-2 sm:p-4 border border-white/40 hover:border-[#D4AF37] transition-all">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-[#D4AF37]/20 rounded-lg">
               <Award size={20} style={{ color: '#D4AF37' }} />
@@ -123,7 +123,7 @@ export function Analytics() {
           </div>
         </div>
 
-        <div className="w-96 bg-gradient-to-br from-white/[0.06] to-white/[0.02] shadow-[0_10px_50px_rgba(0,0,0,0.6)] rounded-xl p-4 border border-white/40 hover:border-[#A8D5BA] transition-all">
+        <div className="sm:w-96 bg-gradient-to-br from-white/[0.06] to-white/[0.02] shadow-[0_10px_50px_rgba(0,0,0,0.6)] rounded-xl  py-4 px-2 sm:p-4 border border-white/40 hover:border-[#A8D5BA] transition-all">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-[#A8D5BA]/20 rounded-lg">
               <Users size={20} style={{ color: '#A8D5BA' }} />
@@ -137,21 +137,21 @@ export function Analytics() {
           </div>
         </div>
 
-        <div className=" w-96 bg-gradient-to-br from-white/[0.06] to-white/[0.02] shadow-[0_10px_50px_rgba(0,0,0,0.6)] rounded-xl p-4 border border-white/40 hover:border-[#D4AF37] transition-all">
+        <div className=" sm:w-96 bg-gradient-to-br from-white/[0.06] to-white/[0.02] shadow-[0_10px_50px_rgba(0,0,0,0.6)] rounded-xl py-4 px-2 sm:p-4 border border-white/40 hover:border-[#D4AF37] transition-all">
           <div className="flex items-center gap-3">
             <div className="p-2 mt-3 bg-[#D4AF37]/20 rounded-lg">
               <Award size={20} style={{ color: '#D4AF37' }} />
             </div>
             <div>
               <p className="text-gray-400 text-[11px] uppercase tracking-wide">Top Service</p>
-              <p className="text-[20px] m-0 mt-1 truncate max-w-[150px]" style={{ fontFamily: 'Bebas Neue, Impact, sans-serif' }}>
+              <p className="w-18 m-0 mt-1 truncate max-w-[150px]" style={{ fontFamily: 'Bebas Neue, Impact, sans-serif' }}>
                 {serviceData.sort((a, b) => b.count - a.count)[0]?.name || 'N/A'}
               </p>
             </div>
           </div>
         </div>
 
-        <div className=" w-96 bg-gradient-to-br from-white/[0.06] to-white/[0.02] shadow-[0_10px_50px_rgba(0,0,0,0.6)] rounded-xl p-4 border border-white/40 hover:border-[#D4AF37] transition-all">
+        <div className=" sm:w-96 bg-gradient-to-br from-white/[0.06] to-white/[0.02] shadow-[0_10px_50px_rgba(0,0,0,0.6)] rounded-xl  py-4 px-2 sm:p-4 border border-white/40 hover:border-[#D4AF37] transition-all">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-[#D4AF37]/20 rounded-lg">
               <Clock size={20} style={{ color: '#D4AF37' }} />
@@ -171,7 +171,7 @@ export function Analytics() {
         
 
         {/* Status Distribution */}
-        <div className="bg-gradient-to-br from-white/[0.06] to-white/[0.02] shadow-[0_10px_50px_rgba(0,0,0,0.6)] rounded-xl p-4 border border-white/40">
+        <div className="bg-gradient-to-br from-white/[0.06] to-white/[0.02] shadow-[0_10px_50px_rgba(0,0,0,0.6)] rounded-xl  py-4 px-2 sm:p-4 border border-white/40">
           <h2 className="text-[20px] mb-3 m-0" style={{ fontFamily: 'Bebas Neue, Impact, sans-serif', letterSpacing: '2px' }}>
             STATUS DISTRIBUTION
           </h2>

@@ -33,7 +33,7 @@ export function Header({
 
   return (
     // ✅ FIX: much higher z-index
-    <header className="fixed top-0 left-0 right-0 z-[9999] bg-black border-b border-white/10">
+    <header className="fixed top-0 left-0 right-0 z-[9999] bg-black border-b border-white/10 font-sans">
 
       <div className="bg-black max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 h-[64px] sm:h-[70px] md:h-[90px] flex items-center justify-between">
 
@@ -46,7 +46,7 @@ export function Header({
           }}
         >
           <h1 className="text-[20px] sm:text-[22px] md:text-[26px] lg:text-[32px] tracking-wide text-[#D4AF37] font-serif leading-none">
-            The Hogarth
+            The Company
           </h1>
           <p className="text-[9px] sm:text-[10px] md:text-[11px] tracking-[0.25em] uppercase text-white/50 mt-1">
             Health Club
@@ -54,7 +54,7 @@ export function Header({
         </div>
 
         {/* DESKTOP NAV */}
-        <nav className="hidden xl:flex items-center gap-14 bg-black">
+        <nav className="hidden xl:flex items-center gap-9 bg-black">
           {isDashboard ? (
             <button
               onClick={() => onNavigate("landing")}
@@ -64,11 +64,11 @@ export function Header({
             </button>
           ) : (
             <>
-              <NavItem label="Home" active={activeNav === "home"} onClick={() => onNavigate("landing")} />
-              <NavItem label="Pilates" active={activeNav === "reformer-pilates"} onClick={() => onServiceSelect("reformer-pilates")} />
-              <NavItem label="Gym" active={activeNav === "gym-fitness"} onClick={() => onServiceSelect("gym-fitness")} />
-              <NavItem label="Tennis" active={activeNav === "tennis-swim"} onClick={() => onServiceSelect("tennis-swim")} />
-              <NavItem label="Spa" active={activeNav === "beauty-spa"} onClick={() => onServiceSelect("beauty-spa")} />
+              <NavItem  label="Home" active={activeNav === "home"} onClick={() => onNavigate("landing")} />
+              <NavItem label="Reformer Pilates" active={activeNav === "reformer-pilates"} onClick={() => onServiceSelect("reformer-pilates")} />
+              <NavItem label="Gym & Fitness" active={activeNav === "gym-fitness"} onClick={() => onServiceSelect("gym-fitness")} />
+              <NavItem label="Tennis & Swim" active={activeNav === "tennis-swim"} onClick={() => onServiceSelect("tennis-swim")} />
+              <NavItem label="Beauty & Spa" active={activeNav === "beauty-spa"} onClick={() => onServiceSelect("beauty-spa")} />
               <NavItem label="Memberships" active={activeNav === "membership"} onClick={onMembershipClick} />
               <NavItem label="Dashboard" active={false} onClick={() => onNavigate("dashboard")} />
             </>
@@ -80,7 +80,7 @@ export function Header({
           {!isDashboard && (
             <button
               onClick={onJoinUsClick}
-              className="hidden md:block px-5 lg:px-6 py-2.5 rounded-full bg-gradient-to-r from-[#D4AF37] to-[#F4E4B6] text-black text-sm font-bold uppercase tracking-wider hover:scale-105 transition-all"
+              className="hidden md:block px-5 lg:px-6 py-2.5 rounded-full bg-gradient-to-r from-[#D4AF37] to-[#F4E4B6] text-black text-sm font-bold tracking-wider font-serif hover:scale-105 transition-all"
             >
               Join Us
             </button>
@@ -116,7 +116,7 @@ export function Header({
     md:h-[calc(100vh-90px)]
   "
 >
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-6 font-serif">
             <MobileNav label="Home" onClick={() => handleMobileNav(() => onNavigate("landing"))} />
             <MobileNav label="Reformer Pilates" onClick={() => handleMobileNav(() => onServiceSelect("reformer-pilates"))} />
             <MobileNav label="Gym & Fitness" onClick={() => handleMobileNav(() => onServiceSelect("gym-fitness"))} />
@@ -135,7 +135,7 @@ export function Header({
               Join Us Now
             </button>
             <p className="text-center text-white/30 text-xs sm:text-sm mt-6 uppercase tracking-[0.25em]">
-              The Hogarth Health Club
+              The Company Health Club
             </p>
           </div>
         </div>
@@ -179,6 +179,7 @@ function MobileNav({
         transition-colors
         border-b border-white/10
         py-4
+        font-serif
       "
     >
       {label}

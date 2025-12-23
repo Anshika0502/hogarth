@@ -29,7 +29,7 @@ export function FloatingBookButton() {
       aria-label="Book now"
     >
       <Calendar size={24} />
-      <span className="hidden md:inline text-black">Book Now</span>
+      <span className="hidden md:inline text-white">Book Now</span>
 
       <style>{`
         @keyframes pulse-subtle {

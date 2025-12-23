@@ -59,7 +59,7 @@ export function WhyHogarthSection() {
             Why Choose
             <span className="why-title-highlight">
               {" "}
-              The Hogarth
+              The Company
             </span>
           </h2>
           <p className="why-subtitle">

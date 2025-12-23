@@ -140,7 +140,7 @@ export function ServiceBookingPage({ serviceType, onBack }: ServiceBookingPagePr
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] pt-[70px] md:pt-[80px] w-full overflow-x-hidden">
+    <div className="min-h-screen bg-[#0a0a0a]  w-full overflow-x-hidden">
       {/* Hero Section */}
       <section className="relative h-[40vh] md:h-[60vh] min-h-[350px] flex items-center justify-center overflow-hidden">
         <ImageWithFallback
@@ -150,7 +150,7 @@ export function ServiceBookingPage({ serviceType, onBack }: ServiceBookingPagePr
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-[#0a0a0a]" />
         
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto mt-20">
           <div className="inline-flex items-center gap-2 bg-[#1a1a1a]/80 border border-[#D4AF37]/30 rounded-full px-4 py-1.5 mb-4 backdrop-blur-md">
             <Sparkles size={14} className="text-[#D4AF37]" />
             <span className="text-[#D4AF37] text-[10px] md:text-[12px] font-medium tracking-widest uppercase">
@@ -159,23 +159,23 @@ export function ServiceBookingPage({ serviceType, onBack }: ServiceBookingPagePr
           </div>
           
           <h1 
-            className="text-white mb-2 text-[36px] sm:text-[48px] md:text-[64px] lg:text-[80px] font-bold tracking-tight leading-tight px-2"
+            className="text-white mb-2 text-[36px] sm:text-[48px] md:text-[64px] lg:text-[80px] font-bold tracking-tight leading-tight px-2 pt-5"
             style={{ fontFamily: "'Bebas Neue', sans-serif" }}
           >
             {service.title}
           </h1>
           
-          <p className="text-white/80 text-[14px] sm:text-[18px] md:text-[22px] font-light max-w-2xl mx-auto">
+          <p className="text-white/80 text-[14px] sm:text-[18px] md:text-[22px] font-light max-w-2xl mx-auto pt-5">
             {service.subtitle}
           </p>
         </div>
       </section>
 
       {/* Content Section */}
-      <section className="max-w-[1200px] mx-auto px-4 sm:px-6 py-12 md:py-20">
+      <section className="max-w-[1200px] mx-auto px-4 sm:px-6 py-12 md:py-20 ">
         
         {/* Description & Features Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 mb-20 pt-20">
           <div className="space-y-4">
             <h2 className="text-white text-[28px] md:text-[36px] font-bold">About This Service</h2>
             <p className="text-gray-400 text-[16px] md:text-[18px] leading-relaxed">
@@ -197,15 +197,15 @@ export function ServiceBookingPage({ serviceType, onBack }: ServiceBookingPagePr
         </div>
 
         {/* Experience Cards Section */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 pt-20">
           <h2 className="text-[#D4AF37] text-[32px] md:text-[52px] font-bold uppercase" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
-            The Hogarth Experience
+            The Company Experience
           </h2>
           <div className="h-1 w-24 bg-[#D4AF37] mx-auto mt-4 rounded-full" />
         </div>
 
         {/* Responsive Arched Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-24 items-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-24 items-center pt-10">
           {/* CARD 1 */}
           <div className="mx-auto border-t border-[#D4AF37] p-1.5 rounded-t-full w-full max-w-[280px]">
             <div className="relative aspect-[3/4] overflow-hidden rounded-t-full border-t-4 border-[#D4AF37]">
@@ -247,7 +247,8 @@ export function ServiceBookingPage({ serviceType, onBack }: ServiceBookingPagePr
         </div>
 
         {/* Booking Form */}
-        <div id="booking-form" className="bg-[#1a1a1a] rounded-2xl p-6 sm:p-10 md:p-16 border border-[#2a2a2a] relative overflow-hidden transition-all duration-500 hover:border-[#D4AF37]/20">
+        <div className="mt-72">
+        <div id="booking-form" className="bg-[#1a1a1a] rounded-2xl p-2 sm:p-10 md:p-16 border border-[#2a2a2a] relative overflow-hidden transition-all duration-500 hover:border-[#D4AF37]/20 mt-20">
           <div className="relative z-10 max-w-3xl mx-auto">
             <div className="text-center mb-10">
               <h2 className="text-white mb-2 text-[28px] md:text-[42px] font-bold">Book Your Session</h2>
@@ -399,7 +400,8 @@ export function ServiceBookingPage({ serviceType, onBack }: ServiceBookingPagePr
             </div>
           </form>
           </div>
-        </div>
+          </div>
+          </div>
       </section>
     </div>
   );
